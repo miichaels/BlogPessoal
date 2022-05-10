@@ -29,18 +29,18 @@ public class TemaController {
 	@Autowired
 	private TemaRepository repository;
 	
-	@GetMapping
+	@GetMapping  // metodo para pegar tudo, vai usar a mesma rota principal
 	public ResponseEntity<List<Tema>> GetAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/{id}")
+	@GetMapping("/{id}") //metodo para pegar pelo id, vai usar a rota principal porem vai incluir uma / para puxar parametro
 	public ResponseEntity<Tema>getById(@PathVariable Long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
 	}
 	
-	@GetMapping("/nome/{nome}")
+	 @GetMapping("/nome/{nome}")
 	public ResponseEntity<List<Tema>> getByName(@PathVariable String nome){
 		return ResponseEntity.ok(repository.findAllByDescricaoContainingIgnoreCase(nome));
 	}
@@ -60,8 +60,10 @@ public class TemaController {
 	}
 	
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Long id) {
-		repository.deleteById(id);
+	public ResponseEntity<?> deletePostagem(@PathVariable Long id) {
+	return repository.findById(id).map(resposta -> {repository.deleteById(id);
+	return ResponseEntity.status(HttpStatus.NO_CONTENT).build();})
+	.orElse(ResponseEntity.notFound().build());
 	}
 	
 }

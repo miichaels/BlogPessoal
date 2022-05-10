@@ -22,7 +22,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long id;
 
-	@NotNull
+	@NotNull  // que o espaço nao pode ser null ou @NotBlank que não deixa o espaço ser vazio com espaços p/exemplo
 	public String descricao;
 
 	// Relacionamento do tipo um para muitos (um tema para varias postagens)
@@ -30,7 +30,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 	// todas as postagens atreladas a ela
 	@OneToMany(mappedBy = "tema", cascade = CascadeType.ALL)
 	@JsonIgnoreProperties("tema")
-	private List<PostagemModel> postagem;
+	private List<Postagem> postagem;
 
 	public Long getId() {
 		return id;
@@ -48,11 +48,11 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 		this.descricao = descricao;
 	}
 
-	public List<PostagemModel> getPostagem() {
+	public List<Postagem> getPostagem() {
 		return postagem;
 	}
 
-	public void setPostagem(List<PostagemModel> postagem) {
+	public void setPostagem(List<Postagem> postagem) {
 		this.postagem = postagem;
 	}
 

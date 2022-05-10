@@ -19,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 // Dá um nome para a tabela no meu banco de dados
 @Table(name= "tb_postagem") 
-public class PostagemModel {
+public class Postagem {
 
 	// Definir a coluna de id como chave primaria
 	@Id 
@@ -36,6 +36,20 @@ public class PostagemModel {
 	@ManyToOne
 	@JsonIgnoreProperties("postagem")
 	private Tema tema;
+	
+	@ManyToOne
+	@JsonIgnoreProperties("postagem")
+	private Usuario usuario;
+
+	public Usuario getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
 
 	public Tema getTema() {
 		return tema;

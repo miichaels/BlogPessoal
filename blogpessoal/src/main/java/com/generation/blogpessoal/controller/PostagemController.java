@@ -17,52 +17,54 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.generation.blogpessoal.model.PostagemModel;
+import com.generation.blogpessoal.model.Postagem;
 import com.generation.blogpessoal.repository.PostagemRepository;
 
 @RestController //Aqui é a class controller
 @RequestMapping ("/postagens") // tudo que tiver o (/...) é um endpoint
 @CrossOrigin("*") // Para reconhecer o contato com o front-end 
-public class BlogPessoalController {
+public class PostagemController {
 
 	@Autowired
 	private PostagemRepository repository;
 	
 	@GetMapping
-	public ResponseEntity<List<PostagemModel>> GetAll(){
+	public ResponseEntity<List<Postagem>> GetAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 		
 		@GetMapping("/{id}")
-		public ResponseEntity<PostagemModel> GetById(@PathVariable long id){
+		public ResponseEntity<Postagem> GetById(@PathVariable long id){
 			return repository.findById(id)
 					.map(resp -> ResponseEntity.ok(resp))
 					.orElse(ResponseEntity.notFound().build());
 		}
 			
 			@GetMapping("/titulo/{titulo}")
-			public ResponseEntity<List<PostagemModel>> GetByTitulo(@PathVariable String titulo){
+			public ResponseEntity<List<Postagem>> GetByTitulo(@PathVariable String titulo){
 				return ResponseEntity.ok(repository.findAllByTituloContainingIgnoreCase(titulo));
 				
 			}
 			
 			@PostMapping
-			public ResponseEntity<PostagemModel> post (@Valid @RequestBody PostagemModel postagem){
+			public ResponseEntity<Postagem> post (@Valid @RequestBody Postagem postagem){
 				return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(postagem));
 				
 			}
 			
 			@PutMapping
-			public ResponseEntity<PostagemModel> put (@Valid @RequestBody PostagemModel postagem){
+			public ResponseEntity<Postagem> put (@Valid @RequestBody Postagem postagem){
 				return ResponseEntity.status(HttpStatus.OK).body(repository.save(postagem));
 				
 			}
 	
 			@DeleteMapping("/{id}")
-			public void delete(@PathVariable long id) {
-				repository.deleteById(id);
+			public ResponseEntity<?> deletePostagem(@PathVariable Long id) {
+			return repository.findById(id).map(resposta -> {repository.deleteById(id);
+			return ResponseEntity.status(HttpStatus.NO_CONTENT).build();})
+			.orElse(ResponseEntity.notFound().build());
 			}
-			
+
 			
 	}
 	
