@@ -25,16 +25,16 @@ import com.generation.blogpessoal.repository.TemaRepository;
 @CrossOrigin("*") // Entrar independente do lugar (web,db)
 public class TemaController {
 	
-	// Transfere a responsabilidade de construir as consultas
+	//Transfere a responsabilidade de construir as consultas
 	@Autowired
 	private TemaRepository repository;
 	
-	@GetMapping  // metodo para pegar tudo, vai usar a mesma rota principal
+	@GetMapping  //Metodo para pegar tudo, vai usar a mesma rota principal
 	public ResponseEntity<List<Tema>> GetAll(){
 		return ResponseEntity.ok(repository.findAll());
 	}
 	
-	@GetMapping("/{id}") //metodo para pegar pelo id, vai usar a rota principal porem vai incluir uma / para puxar parametro
+	@GetMapping("/{id}") //Metodo para pegar pelo id, vai usar a rota principal porem vai incluir uma / para puxar parametro
 	public ResponseEntity<Tema>getById(@PathVariable Long id){
 		return repository.findById(id).map(resp -> ResponseEntity.ok(resp))
 				.orElse(ResponseEntity.notFound().build());
