@@ -1,53 +1,45 @@
 # BlogPessoal Michael
 
-BlogPessoalBrocco
 -> Deploy e Documentação do projeto
 
 https://blogpessoalmiichaels.herokuapp.com/
 
-##Login: root
+Login: root
 
-##Senha: root
-
+Senha: root
+#
 O Projeto Blog Pessoal possui as seguintes características:
 
-Dependências no arquivo pom.xml
+- Dependências no arquivo pom.xml
+- Classe Usuario na Camada Model
+- Relacionamento da Classe Usuario com a Classe Postagem
+- Relacionamento da Classe Postagem com a Classe Usuario
+- Classe UsuarioLogin na Camada Model
+- Classe UsuarioRepository na Camada Repository
+- Classe BasicSecurityConfig na Camada Security
+- Classe UserDetailsImpl na Camada Security
+- Classe UserDetailsServiceImpl na Camada Security
+- Classe UsuarioService na Camada Service
+- Classe UsuarioController na Camada Controller
+- O Banco de dados da aplicação será o db_blogpessoal.
+       
+## Linguagem:
 
-Classe Usuario na Camada Model
-
-Relacionamento da Classe Usuario com a Classe Postagem
-
-Relacionamento da Classe Postagem com a Classe Usuario
-
-Classe UsuarioLogin na Camada Model
-
-Classe UsuarioRepository na Camada Repository
-
-Classe BasicSecurityConfig na Camada Security
-
-Classe UserDetailsImpl na Camada Security
-
-Classe UserDetailsServiceImpl na Camada Security
-
-Classe UsuarioService na Camada Service
-
-Classe UsuarioController na Camada Controller
-
-O Banco de dados da aplicação será o db_blogpessoal.
+ Java
+- Programação Orientada ao Objeto - POO
 
 
 
-##Linguagem:
-###Java
+## Aplicações:
 
-Programação Orientada ao Objeto - POO
-Aplicações:
-Spring
+Spring 
 
-Mysql
+Mysql 
 
-Postman
+Postman 
 
 Insomnia
+
+#
 
 Projeto desenvolvido no modulo 2, no curso de formação de desenvolvedores FullStack Java Jr. da GenerationBrasil.
