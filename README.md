@@ -5,9 +5,9 @@ BlogPessoalBrocco
 
 https://blogpessoalmiichaels.herokuapp.com/
 
-Login: root
+##Login: root
 
-Senha: root
+##Senha: root
 
 O Projeto Blog Pessoal possui as seguintes características:
 
@@ -35,8 +35,10 @@ Classe UsuarioController na Camada Controller
 
 O Banco de dados da aplicação será o db_blogpessoal.
 
-Linguagem:
-Java
+
+
+##Linguagem:
+###Java
 
 Programação Orientada ao Objeto - POO
 Aplicações:
